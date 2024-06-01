@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "About - Webster Corporation";
+}
+
+<!-- CSS About Us -->
+@Styles.Render("~/Content/css/about.css")
+
+<!-- Body -->
+<div class="main-content">
+    <div class="breadcrumb" style="margin-bottom:auto">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">@Html.ActionLink("Home", "", "Home")</li>
+                    <li class="breadcrumb-item">About Us</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="heading">
+        <h1>About us</h1>
+        <p>With a great mission and long-term vision, Webster Organization is not only a business but also a trusted partner and a source of inspiration in the global oil and gas industry.</p>
+    </div>
+    <div class="container">
+        <section class="about">
+            <div class="about-image">
+                <img src="~/img/home/banner/banner2.jpg">
+            </div>
+            <div class="about-content">
+                <h2>Introduction</h2>
+                <p> Webster Organization is a company in the Oil and Gas Company industry, known as one of the leading organizations in the world in this field. With a system of branches dispersed across different regions, Webster is not only a major oil and gas producer but also a strategic partner in providing global energy solutions.</p>
+                <p>This company not only operates in oil and gas exploitation and production, but also focuses on research and development of new technology, to optimize production performance and minimize negative impacts on the environment. Webster always puts its mission at the center, which is to provide clean and sustainable energy to the world.</p>
+                <p>With a diverse portfolio of bonds, Webster is a trusted partner to many different multinational companies. Their bonds not only offer profitable investment opportunities but are also considered one of the safe and stable investments in the global financial market.</p>
+            </div>
+        </section>
+    </div>
+</div>

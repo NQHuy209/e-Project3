@@ -1,0 +1,52 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Webster Corporation - Manage</title>
+    <link rel="shortcut icon" href="~/img/icon.png" />
+    @Styles.Render("~/Content/css/style.css")
+</head>
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-center auth px-0">
+                <div class="row w-100 mx-0">
+                    <div class="col-lg-4 mx-auto">
+                        <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                            <div class="brand-logo">
+                                <img src="~/img/Logo-(header).png" alt="logo">
+                            </div>
+                            <h2>Hello! let's get started</h2>
+                            <h4 class="font-weight-light">Login to continue.</h4>
+                            @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @class = "pt-3" }))
+                            {
+                                <div class="form-group">
+                                    <label for="username">Username:</label>
+                                    <input type="text" class="form-control form-control-lg" name="username" placeholder="Username">
+                                    @Html.ValidationMessage("username", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password:</label>
+                                    <input type="password" class="form-control form-control-lg" name="password" placeholder="Password">
+                                    @Html.ValidationMessage("password", new { @class = "text-danger" })
+                                </div>
+                                <div class="mt-5">
+                                    <input type="submit" class="btn btn-inverse-primary btn-fw" value="Login">
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

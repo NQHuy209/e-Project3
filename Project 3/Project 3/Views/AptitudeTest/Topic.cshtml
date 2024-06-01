@@ -1,0 +1,45 @@
+@{
+    ViewBag.Title = "Topic - Webster Corporation";
+}
+<!-- Body -->
+<div class="main-content">
+    <div class="breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">@Html.ActionLink("Home", "", "Home")</li>
+                    <li class="breadcrumb-item">@Html.ActionLink("Exam", "", "Exam")</li>
+                    <li class="breadcrumb-item">Topic</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <section class="featued-list" id="featued-list">
+        <div class="container">
+            <div class="row justify-content-center" style="margin-top:120px">
+                <div class="col-12 col-lg-3 col-sm-12 relative hover-link">
+                    <div class="shadow-box">
+                        <div class="img"><img height="100" src="@Url.Content("~/img/feature1.png")" alt="General Knowledge"></div>
+                        <h3>General Knowledge</h3>
+                        <p>You will have to do the general knowledge test first.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-3 col-sm-12 relative hover-link">
+                    <div class="shadow-box">
+                        <div class="img"><img height="100" src="@Url.Content("~/img/feature2.jpg")" alt="Mathematics"></div>
+                        <h3>Mathematics</h3>
+                        <p>When you complete the general knowledge test, you continue to the Mathematics test.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-3 col-sm-12 relative hover-link">
+                    <div class="shadow-box">
+                        <div class="img"><img height="100" src="@Url.Content("~/img/home/lession3.jpg")" alt="Computer Technology"></div>
+                        <h3>Computer Technology</h3>
+                        <p>And finally, knowledge of Computer Technology.</p>
+                    </div>
+                </div>
+            </div>
+            @Html.ActionLink("Ready", "Guide", "AptitudeTest", new { area = "", id = ViewBag.ExamId }, new { @class = "btn blue", style = "margin: 39px 0px 0px 486px;" })
+        </div>
+    </section>
+</div>

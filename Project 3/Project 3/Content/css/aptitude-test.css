@@ -1,0 +1,70 @@
+.d9Box>a {
+    text-decoration: none;
+}
+
+.exam-content ul li a:hover {
+    text-decoration: none;
+}
+
+.no-padding-left a:hover {
+    text-decoration: none;
+}
+
+.the-answer-box {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -khtml-border-radius: 5px;
+    background: #f6f6f6;
+    margin-top: 16px;
+}
+
+.the-answer-box .answer-header {
+    background: #e6e6e6;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+the-answer-box .answer-result {
+    padding-top: 27px;
+    padding-bottom: 34px;
+}
+
+.the-answer-box .answer-header h2 {
+    font-family: "Nunito", sans-serif;
+    font-size: 18px;
+    line-height: 1.1;
+    font-weight: 700;
+    color: #f4511e;
+    width: 50%;
+    display: inline-block;
+}
+
+the-answer-box .answer-header,
+.the-answer-box .answer-result {
+    padding: 0 16px;
+}
+
+.question-detail .question-answer-detail .checkbox-control {
+    margin-bottom: 24px;
+}
+
+.question-detail .question-answer-detail .checkbox-control .custom-control-label {
+    font-size: 16px;
+}
+
+.showButtonCheckForMultiChoice {
+    font-family: "Nunito", sans-serif;
+    font-size: 16px;
+    line-height: 1.1;
+    font-weight: 400;
+    color: #065592;
+}
+
+.showButtonCheckForMultiChoice:hover {
+    text-decoration: none;
+}
+
+.radio-control input:checked~label:after {
+    top: 50%;
+}

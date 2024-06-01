@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="form-group">
+        Between
+        <input type="date" class="form-control" name="start_day" id="start_day" style="width:200px;height:45px">
+        and
+        <input type="date" class="form-control" name="end_day" id="end_day" style="width:200px;height:45px">
+        <button class="btn btn-primary" id="search">Search</button>
+    </div>
+    <div class="row">
+        <div class="col-md-12 grid-margin">
+            <div class="d-flex justify-content-between flex-wrap">
+                <div class="d-flex align-items-end flex-wrap">
+                    <div class="me-md-3 me-xl-5">
+                        <h2>Welcome back,</h2>
+                        <p class="mb-md-0">Your analytics dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body" id="divChart"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $('#search').click(function () {
+            var start_day = $('#start_day').val();
+            var end_day = $('#end_day').val();
+
+            $.get('/Admin/Home/GetData?start_day=' + start_day + '&end_day=' + end_day, function (data) {
+                ChartExam(data);
+            });
+        });
+
+        $.get('/Admin/Home/GetData', function (data) {
+            ChartExam(data);
+        });
+
+        function ChartExam(data) {
+            $("#divChart").html('<h1 class="card-title">Bar chart - Number of candidates participating in each exam</h1><canvas id="barChart" width="446" height="180" style="display: block; width: 446px; height: 180px;" class="chartjs-render-monitor"></canvas>');
+
+            var listName = [];
+            var listTotal = [];
+
+            $.each(data, function (index, item) {
+                listName.push(item.Name);
+                listTotal.push(item.Total);
+            });
+
+            var data = {
+                labels: listName,
+                datasets: [{
+                    label: '# of participating candidates',
+                    data: listTotal,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    fill: false
+                }]
+            };
+            var options = {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                },
+                elements: {
+                    point: {
+                        radius: 0
+                    }
+                }
+
+            };
+            if ($("#barChart").length) {
+                var barChartCanvas = $("#barChart").get(0).getContext("2d");
+                var barChart = new Chart(barChartCanvas, {
+                    type: 'bar',
+                    data: data,
+                    options: options
+                });
+            }
+        }
+    </script>
+}

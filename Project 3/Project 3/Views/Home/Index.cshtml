@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "Webster Corporation";
+}
+
+<!-- CSS Home -->
+@Styles.Render("~/Content/css/camera.css")
+
+<!-- Body -->
+<div class="main-content">
+    <!-- Slider -->
+    <div class="fluid_container hidden-xs">
+        <div class="camera_wrap camera_azure_skin 732" id="camera_wrap_1" style="margin-bottom:0px;">
+            <div data-src="@Url.Content("~/img/home/banner/banner1.jpg")"></div>
+            <div data-src="@Url.Content("~/img/home/banner/banner2.jpg")"></div>
+            <div data-src="@Url.Content("~/img/home/banner/banner3.jpg")"></div>
+        </div>
+    </div>
+
+
+    <!--BANNER-->
+    <div class="banner">
+        <div class="middle" style="margin-top:15px">
+            <h1>Online Aptitude Test</h1>
+        </div>
+    </div>
+
+    <section class="lession-list no-padding-bottom">
+        <div class="bg relative l01">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6 col-sm-12">
+                        <div class="lession-box">
+                            <h2 class="title40Bold">General Knowledge</h2>
+                            <p>The test's topics are designed to reflect a broad range of general knowledge areas, from natural sciences, social sciences, history, to culture and arts. You will have the opportunity to challenge and test your knowledge through questions related to important historical events, scientific discoveries, local and international culture, and much more.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg white l02">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6 col-sm-12">
+                        <div class="center bg-lession"></div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-sm-12">
+                        <div class="lession-box">
+                            <h2 class="title40Bold">Mathematics</h2>
+                            <p>
+                                Do you want to assess your math level accurately and effectively? Our Online Multiple Choice Math Proficiency Test is the perfect tool for you to do that. With a variety of diverse and interesting questions, we are committed to bringing you the best learning experience.
+                                <br />
+                                The test's topics are designed to reflect a broad range of aspects of mathematics, from basic problems to complex challenges. You will have the opportunity to test your knowledge and skills through questions related to algebra, geometry, probability, and many more topics.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg white l03">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6 col-sm-12">
+                        <div class="lession-box">
+                            <h2 class="title40Bold">Computer Technology</h2>
+                            <p>The test's topics are designed to reflect important aspects of computer technology, from its historical development to modern concepts and techniques. You will have the opportunity to challenge and test your knowledge through questions about basic computer knowledge, operating systems, computer networks, network security, and many other fields.</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 col-sm-12">
+                        <div class="center bg-lession"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="smart-testing">
+        <div class="container">
+            <h2 class="title40Bold center-title"><span>SMART QUIZ</span></h2>
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-3 col-sm-4 col-custom-padding">
+                    <div class="smart-box">
+                        <div class="green-rect"><img src="@Url.Content("~/img/home/smart1.png")" alt="Diversity of content" /></div>
+                        <h3 class="title25Bold">Diversity of content</h3>
+                        <p>Provides diverse content of multiple-choice questions in many different fields.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-1dot4">
+                    <div class="green-line"></div>
+                </div>
+                <div class="col-12 col-lg-3 col-sm-4 col-custom-padding">
+                    <div class="smart-box">
+                        <div class="green-rect"><img src="@Url.Content("~/img/home/smart2.png")" alt="Question matrix" /></div>
+                        <h3 class="title25Bold">Question matrix</h3>
+                        <p>The system will rely on a rich matrix of questions to synthesize into multiple-choice questions.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-1dot4">
+                    <div class="green-line"></div>
+                </div>
+                <div class="col-12 col-lg-3 col-sm-4 col-custom-padding last">
+                    <div class="smart-box">
+                        <div class="green-rect"><img src="@Url.Content("~/img/home/smart3.png")" alt="Result" /></div>
+                        <h3 class="title25Bold">Result</h3>
+                        <p>After completing the multiple choice test, the system will notify you of the score achieved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

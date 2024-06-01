@@ -1,0 +1,28 @@
+﻿@model List<Project_3.Models.REL_EXAMINATION_QUESTIONS>
+@{
+    ViewBag.Title = "Result - Webster Corporation";
+}
+
+<!-- Body -->
+<div class="main-content">
+    <div class="breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">@Html.ActionLink("Home", "", "Home")</li>
+                    <li class="breadcrumb-item">@Html.ActionLink("Exam", "", "Exam")</li>
+                    <li class="breadcrumb-item">@Html.ActionLink("Topic", "Topic", "AptitudeTest", new { area = "", id = ViewBag.ExamId }, new { })</li>
+                    <li class="breadcrumb-item">@Html.ActionLink("Guide", "Guide", "AptitudeTest", new { area = "", id = ViewBag.ExamId }, new { })</li>
+                    <li class="breadcrumb-item">@Html.ActionLink("Aptitude Test", "", "AptitudeTest", new { area = "", id = ViewBag.ExamId }, new { })</li>
+                    <li class="breadcrumb-item">Result</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content-two-columns">
+        <div class="container">
+            <h1 style="font-size: 80px; text-align:center; margin:150px; font-weight:bold">@ViewBag.Message</h1>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "Contact - Webster Corporation";
+}
+<!-- Body -->
+<div class="main-content">
+    <div class="breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">@Html.ActionLink("Home", "", "Home")</li>
+                    <li class="breadcrumb-item">Contact</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="page_contact ">
+        <div class="container">
+            <div class="heading-m1">
+                <h1 class="title">Contact</h1>
+            </div>
+            <div class="row">
+                <div class="col-12 order-1 order-lg-1">
+                    <div class="wrapcontact">
+                        <div class="iFrameMap">
+                            <div id="contact_map" class="map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.740372925564!2d105.8500153!3d21.0030419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ac748cee8b8d%3A0x2916773f4229fd1d!2zMTkgUC4gTMOqIFRoYW5oIE5naOG7iywgQuG6oWNoIE1haSwgSGFpIELDoCBUcsawbmcsIEjDoCBO4buZaQ!5e0!3m2!1svi!2s!4v1709832356715!5m2!1svi!2s" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 order-lg-2 order-2">
+                    <div class="row">
+                        <div class="col-lg-4 col-12">
+                            <div class="item-contact">
+                                <div class="img">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="content-r">
+                                    Address:<p>19 Lê Thanh Nghị, Quận Hai Bà Trưng, TP. Hà Nội</p>
+                                </div>
+                            </div>
+                            <div class="item-contact">
+                                <div class="img">
+                                    <i class="fas fa-question"></i>
+                                </div>
+                                <div class="content-r">
+                                    Send questions:<a href="mailto:WebsterCorporation@mail.com.vn">WebsterCorporation@mail.com.vn</a>
+                                </div>
+                            </div>
+                            <div class="item-contact">
+                                <div class="img">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="content-r">
+                                    Phone Number:<a class="fone" href="tel:19001234">1900 1234</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-12">
+                            <div id="pagelogin">
+                                <form method="post">
+                                    <div class="form-signup clearfix">
+                                        <div class="row group_contact">
+                                            <fieldset class="form-group col-lg-6 col-12">
+                                                <label>Full Name <em>*</em></label>
+                                                <input type="text" class="form-control form-control-lg" name="contact[Name]" required>
+                                            </fieldset>
+
+                                            <fieldset class="form-group col-lg-6 col-12">
+                                                <label>Email <em>*</em></label>
+                                                <input type="email" id="email1" class="form-control form-control-lg" name="contact[email]" required>
+                                            </fieldset>
+
+                                            <fieldset class="form-group col-12">
+                                                <label>Content <em>*</em></label>
+                                                <textarea name="contact[body]" id="comment" class="form-control content-area form-control-lg" rows="5" required></textarea>
+                                            </fieldset>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <button type="submit" class="btn blue">Send</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Create Candidate";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Create Candidate</h1>
+                    @if (ViewBag.Message != null)
+                    {
+                        <div class="alert alert-success" role="alert">
+                            <b>@ViewBag.Message</b>
+                        </div>
+                    }
+                    @using (Html.BeginForm("Create", "Candidate", FormMethod.Post, new { @class = "forms-sample" }))
+                    {
+                        <div class="form-group">
+                            <label for="FullName">Full Name:</label>
+                            <input type="text" class="form-control" name="FullName" placeholder="Full Name">
+                            @Html.ValidationMessage("FullName", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Birth">Date of Birth:</label>
+                            <input type="date" class="form-control" name="Birth">
+                            @Html.ValidationMessage("Birth", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Gender:</label>
+                            <select class="form-control" name="Gender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="PhoneNumber">Phone Number:</label>
+                            <input type="number" class="form-control" name="PhoneNumber" placeholder="Phone Number">
+                            @Html.ValidationMessage("PhoneNumber", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Email">Email:</label>
+                            <input type="email" class="form-control" name="Email" placeholder="Email">
+                            @Html.ValidationMessage("Email", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Address">Address:</label>
+                            <input type="text" class="form-control" name="Address" placeholder="Address">
+                            @Html.ValidationMessage("Address", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Education">Education:</label>
+                            <input type="text" class="form-control" name="Education" placeholder="Education">
+                            @Html.ValidationMessage("Education", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="WorkExperience">Work Experience:</label>
+                            <input type="text" class="form-control" name="WorkExperience" placeholder="Work Experience">
+                            @Html.ValidationMessage("WorkExperience", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Username">Username:</label>
+                            <input type="text" class="form-control" name="Username" placeholder="Username">
+                            @Html.ValidationMessage("Username", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Password">Password:</label>
+                            <input type="password" class="form-control" name="Password" placeholder="Password">
+                            <div id="eye">
+                                <i class="mdi mdi-eye"></i>
+                            </div>
+                            <div>
+                                @Html.ValidationMessage("Password", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-inverse-primary btn-fw">Create</button>
+                        @Html.ActionLink("Cancel", "", "Candidate", new { area = "Admin" }, new { @class = "btn btn-inverse-secondary btn-fw" })
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

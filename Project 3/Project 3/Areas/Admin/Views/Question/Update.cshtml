@@ -1,0 +1,81 @@
+﻿@model Project_3.Models.QUESTIONS
+@{
+    ViewBag.Title = "Update Question";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Update Question</h1>
+                    @if (ViewBag.Message != null)
+                    {
+                        <div class="alert alert-success" role="alert">
+                            <b>@ViewBag.Message</b>
+                        </div>
+                    }
+                    @using (Html.BeginForm("Update", "Question", FormMethod.Post, new { @class = "forms-sample" }))
+                    {
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="Content">Content:</label>
+                                <input type="text" class="form-control" name="Content" placeholder="Content" value="@Model.Content">
+                                @Html.ValidationMessageFor(q => q.Content, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        for (int i = 0; i < 4; i++)
+                        {
+                            string answer = Model.Answer_A;
+                            if (i == 1) { answer = Model.Answer_B; }
+                            if (i == 2) { answer = Model.Answer_C; }
+                            if (i == 3) { answer = Model.Answer_D; }
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="Answer_@((char)('A' + i))">Answer @((char)('A' + i)):</label>
+                                    <input type="text" class="form-control" name="Answer_@((char)('A' + i))" placeholder="Answer @((char)('A' + i))" value="@answer">
+                                    @Html.ValidationMessage("Answer_" + ((char)('A' + i)), "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        }
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="Correct_Answer">Correct Answer:</label>
+                                <select class="form-control" name="Correct_Answer_Id">
+                                    @foreach (var answer in Project_3.Data.Common.CorrectAnswer())
+                                    {
+                                        if (Model.Correct_Answer_Id == answer.Correct_Answer_Id)
+                                        {
+                                            <option value=@answer.Correct_Answer_Id selected>@answer.Answer</option>
+                                        }
+                                        else
+                                        {
+                                            <option value=@answer.Correct_Answer_Id>@answer.Answer</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="Point">Point:</label>
+                                @Html.DropDownListFor(q => q.Point,
+                                new[] {
+                                    new SelectListItem() { Text = "1", Value = "1" },
+                                    new SelectListItem() { Text = "2", Value = "2" },
+                                    new SelectListItem() { Text = "3", Value = "3" },
+                                    new SelectListItem() { Text = "4", Value = "4" },
+                                    new SelectListItem() { Text = "5", Value = "5" }
+                                },
+                                new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-inverse-primary btn-fw">Save</button>
+                        @Html.ActionLink("Cancel", "", "Question", new { area = "Admin", page = Project_3.Data.Common.Page, searchPage = Project_3.Data.Common.Search, topicPage = Project_3.Data.Common.SearchTopic }, new { @class = "btn btn-inverse-secondary btn-fw" })
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

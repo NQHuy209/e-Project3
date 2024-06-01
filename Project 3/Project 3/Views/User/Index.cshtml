@@ -1,0 +1,99 @@
+@model Project_3.Models.CANDIDATES
+@{
+    ViewBag.Title = "User - Webster Corporation";
+}
+<!-- Body -->
+<div class="main-content">
+    <div class="breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">@Html.ActionLink("Home", "", "Home")</li>
+                    <li class="breadcrumb-item">User</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="section-gap">
+        <div class="container">
+            <div class="row row10">
+                <div class="col-md">
+                    <div class="information-inner">
+                        <div class="card rounded-sm bg-white">
+                            <div class="card-header bg-transparent rounded-0 border-0">
+                                <div class="heading-m1">
+                                    <div class="title">Account Information</div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="information-view" id="informationView">
+                                    <div class="information-list">
+                                        <div class="row no-gutters pb-3 mb-3">
+                                            <div class="col-5 col-md-4">Full Name:</div>
+                                            <div class="col-7 text-right text-md-left pl-md-8 col-md-8">
+                                                <b>@Html.DisplayFor(x => x.FullName)</b>
+                                            </div>
+                                        </div>
+                                        <div class="row no-gutters pb-3 mb-3">
+                                            <div class="col-5 col-md-4">Date of birth:</div>
+                                            <div class="col-7 text-right text-md-left pl-md-8 col-md-8">
+                                                <b>@Html.DisplayFor(x => x.Birth)</b>
+                                            </div>
+                                        </div>
+                                        <div class="row no-gutters pb-3 mb-3">
+                                            <div class="col-5 col-md-4">Gender:</div>
+                                            <div class="col-7 text-right text-md-left pl-md-8 col-md-8">
+                                                <b>@Html.DisplayFor(x => x.Gender)</b>
+                                            </div>
+                                        </div>
+                                        <div class="row no-gutters pb-3 mb-3">
+                                            <div class="col-5 col-md-4">Phone number:</div>
+                                            <div class="col-7 text-right text-md-left pl-md-8 col-md-8">
+                                                <b>@Html.DisplayFor(x => x.PhoneNumber)</b>
+                                            </div>
+                                        </div>
+                                        <div class="row no-gutters pb-3 mb-3">
+                                            <div class="col-5 col-md-4">Email:</div>
+                                            <div class="col-7 text-right text-md-left pl-md-8 col-md-8">
+                                                <b>@Html.DisplayFor(x => x.Email)</b>
+                                            </div>
+                                        </div>
+                                        <div class="row no-gutters pb-3 mb-3">
+                                            <div class="col-5 col-md-4">Address:</div>
+                                            <div class="col-7 text-right text-md-left pl-md-8 col-md-8">
+                                                <b>@Html.DisplayFor(x => x.Address)</b>
+                                            </div>
+                                        </div>
+                                        <div class="row no-gutters pb-3 mb-3">
+                                            <div class="col-5 col-md-4">Education:</div>
+                                            <div class="col-7 text-right text-md-left pl-md-8 col-md-8">
+                                                <b>@Html.DisplayFor(x => x.Education)</b>
+                                            </div>
+                                        </div>
+                                        <div class="row no-gutters pb-3 mb-3">
+                                            <div class="col-5 col-md-4">Work Experience:</div>
+                                            <div class="col-7 text-right text-md-left pl-md-8 col-md-8">
+                                                <b>@Html.DisplayFor(x => x.WorkExperience)</b>
+                                            </div>
+                                        </div>
+                                        <div class="row no-gutters pb-3 mb-3">
+                                            <div class="col-5 col-md-4">Username:</div>
+                                            <div class="col-7 text-right text-md-left pl-md-8 col-md-8">
+                                                <b>@Html.DisplayFor(x => x.Username)</b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-5 pt-4 border-top text-center text-md-left">
+                                        @Html.ActionLink("Update", "Update", "User", new { area = "" }, new { @class = "btn blue" })
+                                        @Html.ActionLink("Change Password", "ChangePassword", "User", new { area = "" }, new { @class = "btn blue" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="~/img/icon.png" />
+    @Styles.Render("~/Content/css/materialdesignicons.min.css")
+    @Styles.Render("~/Content/css/style.css")
+</head>
+<body>
+    <div class="container-scroller">
+        <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="navbar-brand-wrapper d-flex justify-content-center">
+                <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
+                    <a class="navbar-brand brand-logo" href="/"><img src="~/img/Logo-(header).png" style="width: 166px; height: auto;" alt="logo" /></a>
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                        <span class="mdi mdi-sort-variant"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item nav-profile dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
+                            <i class="mdi mdi-account" style="font-size: 25px; margin-right: auto;"></i>
+                            <span class="nav-profile-name" style="margin-left: auto;">@Session[Project_3.Data.Manager.fullname]</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                            <a href="/Admin/Login/Logout" class="dropdown-item">
+                                <i class="mdi mdi-logout text-primary"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container-fluid page-body-wrapper">
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item" id="dashboard">
+                        <a class="nav-link" href="/Admin">
+                            <i class="mdi mdi-home menu-icon"></i>
+                            <span class="menu-title">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" id="examination">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#ui-examination" aria-expanded="false" aria-controls="ui-examination">
+                            <i class="mdi mdi-file-document-box menu-icon"></i>
+                            <span class="menu-title">Examination</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="ui-examination">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="/Admin/Exam">Exam</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="/Admin/Question">Question</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item" id="humanresources">
+                        <a class="nav-link" href="/Admin/HumanResources">
+                            <i class="mdi mdi-account-check menu-icon"></i>
+                            <span class="menu-title">HR</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" id="candidate" hidden=@(Project_3.Data.Common.CheckRole(3) ? null : "hidden")>
+                        <a class="nav-link" href="/Admin/Candidate">
+                            <i class="mdi mdi-account-multiple menu-icon"></i>
+                            <span class="menu-title">Candidate</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" id="manager" hidden=@(Project_3.Data.Common.CheckRole(2) ? null : "hidden")>
+                        <a class="nav-link" href="/Admin/Manager">
+                            <i class="mdi mdi-account-multiple menu-icon"></i>
+                            <span class="menu-title">Manager</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" id="role" hidden=@(Project_3.Data.Common.CheckRole(1) ? null : "hidden")>
+                        <a class="nav-link" href="/Admin/Role">
+                            <i class="mdi mdi-account-star menu-icon"></i>
+                            <span class="menu-title">Role</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="main-panel">
+                @Scripts.Render("~/Scripts/js/vendor.bundle.base.js")
+                @RenderBody()
+                <footer class="footer">
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Content: Group 2 - C2209I</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">MANAGE</span>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/Scripts/js/Chart.min.js")
+    @Scripts.Render("~/Scripts/js/template.js")
+    @RenderSection("scripts", false)
+</body>
+
+</html>

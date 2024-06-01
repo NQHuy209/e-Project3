@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Project3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CANDIDATES">
+    <Key>
+      <PropertyRef Name="CandidateId" />
+    </Key>
+    <Property Name="CandidateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Birth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Education" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WorkExperience" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="RESULTS" Relationship="Self.R_57" FromRole="CANDIDATES" ToRole="RESULTS" />
+    <NavigationProperty Name="CANDIDATES_TEST" Relationship="Self.R_65" FromRole="CANDIDATES" ToRole="CANDIDATES_TEST" />
+  </EntityType>
+  <EntityType Name="CANDIDATES_TEST">
+    <Key>
+      <PropertyRef Name="CandidateId" />
+      <PropertyRef Name="ExaminationId" />
+      <PropertyRef Name="QuestionId" />
+      <PropertyRef Name="TopicId" />
+    </Key>
+    <Property Name="CandidateId" Type="Int32" Nullable="false" />
+    <Property Name="ExaminationId" Type="Int32" Nullable="false" />
+    <Property Name="QuestionId" Type="Int32" Nullable="false" />
+    <Property Name="TopicId" Type="Int32" Nullable="false" />
+    <Property Name="Candidate_Answer" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CANDIDATES" Relationship="Self.R_65" FromRole="CANDIDATES_TEST" ToRole="CANDIDATES" />
+    <NavigationProperty Name="EXAMINATION" Relationship="Self.R_66" FromRole="CANDIDATES_TEST" ToRole="EXAMINATION" />
+    <NavigationProperty Name="QUESTIONS" Relationship="Self.R_67" FromRole="CANDIDATES_TEST" ToRole="QUESTIONS" />
+  </EntityType>
+  <EntityType Name="CORRECT_ANSWER">
+    <Key>
+      <PropertyRef Name="Correct_Answer_Id" />
+    </Key>
+    <Property Name="Correct_Answer_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Answer" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="QUESTIONS" Relationship="Self.R_68" FromRole="CORRECT_ANSWER" ToRole="QUESTIONS" />
+  </EntityType>
+  <EntityType Name="EXAMINATION">
+    <Key>
+      <PropertyRef Name="ExaminationId" />
+    </Key>
+    <Property Name="ExaminationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExaminationName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Start_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="End_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Score" Type="Int32" Nullable="false" />
+    <Property Name="Descriptions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CANDIDATES_TEST" Relationship="Self.R_66" FromRole="EXAMINATION" ToRole="CANDIDATES_TEST" />
+    <NavigationProperty Name="STATUS_EXAM" Relationship="Self.R_32" FromRole="EXAMINATION" ToRole="STATUS_EXAM" />
+    <NavigationProperty Name="REL_EXAMINATION_QUESTIONS" Relationship="Self.R_54" FromRole="EXAMINATION" ToRole="REL_EXAMINATION_QUESTIONS" />
+    <NavigationProperty Name="RESULTS" Relationship="Self.R_59" FromRole="EXAMINATION" ToRole="RESULTS" />
+    <NavigationProperty Name="REL_MANAGER_EXAMINATION" Relationship="Self.R_8" FromRole="EXAMINATION" ToRole="REL_MANAGER_EXAMINATION" />
+  </EntityType>
+  <EntityType Name="MANAGER">
+    <Key>
+      <PropertyRef Name="ManagerId" />
+    </Key>
+    <Property Name="ManagerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Birth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="REL_MANAGER_ROLES" Relationship="Self.R_3" FromRole="MANAGER" ToRole="REL_MANAGER_ROLES" />
+    <NavigationProperty Name="REL_MANAGER_EXAMINATION" Relationship="Self.R_6" FromRole="MANAGER" ToRole="REL_MANAGER_EXAMINATION" />
+  </EntityType>
+  <EntityType Name="QUESTIONS">
+    <Key>
+      <PropertyRef Name="QuestionId" />
+      <PropertyRef Name="TopicId" />
+    </Key>
+    <Property Name="QuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Answer_A" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Answer_B" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Answer_C" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Answer_D" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TopicId" Type="Int32" Nullable="false" />
+    <Property Name="Point" Type="Int32" Nullable="false" />
+    <Property Name="Correct_Answer_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CANDIDATES_TEST" Relationship="Self.R_67" FromRole="QUESTIONS" ToRole="CANDIDATES_TEST" />
+    <NavigationProperty Name="CORRECT_ANSWER" Relationship="Self.R_68" FromRole="QUESTIONS" ToRole="CORRECT_ANSWER" />
+    <NavigationProperty Name="TOPIC" Relationship="Self.R_15" FromRole="QUESTIONS" ToRole="TOPIC" />
+    <NavigationProperty Name="REL_EXAMINATION_QUESTIONS" Relationship="Self.R_56" FromRole="QUESTIONS" ToRole="REL_EXAMINATION_QUESTIONS" />
+  </EntityType>
+  <EntityType Name="REL_EXAMINATION_QUESTIONS">
+    <Key>
+      <PropertyRef Name="ExaminationId" />
+      <PropertyRef Name="QuestionId" />
+      <PropertyRef Name="TopicId" />
+    </Key>
+    <Property Name="ExaminationId" Type="Int32" Nullable="false" />
+    <Property Name="QuestionId" Type="Int32" Nullable="false" />
+    <Property Name="TopicId" Type="Int32" Nullable="false" />
+    <Property Name="ManagerId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EXAMINATION" Relationship="Self.R_54" FromRole="REL_EXAMINATION_QUESTIONS" ToRole="EXAMINATION" />
+    <NavigationProperty Name="QUESTIONS" Relationship="Self.R_56" FromRole="REL_EXAMINATION_QUESTIONS" ToRole="QUESTIONS" />
+  </EntityType>
+  <EntityType Name="REL_MANAGER_EXAMINATION">
+    <Key>
+      <PropertyRef Name="ManagerId" />
+      <PropertyRef Name="ExaminationId" />
+    </Key>
+    <Property Name="ManagerId" Type="Int32" Nullable="false" />
+    <Property Name="ExaminationId" Type="Int32" Nullable="false" />
+    <Property Name="ManagerId_create" Type="Int32" />
+    <NavigationProperty Name="EXAMINATION" Relationship="Self.R_8" FromRole="REL_MANAGER_EXAMINATION" ToRole="EXAMINATION" />
+    <NavigationProperty Name="MANAGER" Relationship="Self.R_6" FromRole="REL_MANAGER_EXAMINATION" ToRole="MANAGER" />
+  </EntityType>
+  <EntityType Name="REL_MANAGER_ROLES">
+    <Key>
+      <PropertyRef Name="ManagerId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="ManagerId" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="Timestamps" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="MANAGER" Relationship="Self.R_3" FromRole="REL_MANAGER_ROLES" ToRole="MANAGER" />
+    <NavigationProperty Name="ROLES" Relationship="Self.R_5" FromRole="REL_MANAGER_ROLES" ToRole="ROLES" />
+  </EntityType>
+  <EntityType Name="RESULTS">
+    <Key>
+      <PropertyRef Name="CandidateId" />
+      <PropertyRef Name="ExaminationId" />
+    </Key>
+    <Property Name="CandidateId" Type="Int32" Nullable="false" />
+    <Property Name="ExaminationId" Type="Int32" Nullable="false" />
+    <Property Name="Score" Type="Int32" Nullable="false" />
+    <Property Name="TopicId" Type="Int32" Nullable="false" />
+    <Property Name="StatusId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CANDIDATES" Relationship="Self.R_57" FromRole="RESULTS" ToRole="CANDIDATES" />
+    <NavigationProperty Name="EXAMINATION" Relationship="Self.R_59" FromRole="RESULTS" ToRole="EXAMINATION" />
+    <NavigationProperty Name="STATUS_RESULTS" Relationship="Self.R_60" FromRole="RESULTS" ToRole="STATUS_RESULTS" />
+  </EntityType>
+  <EntityType Name="ROLES">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="REL_MANAGER_ROLES" Relationship="Self.R_5" FromRole="ROLES" ToRole="REL_MANAGER_ROLES" />
+  </EntityType>
+  <EntityType Name="STATUS_EXAM">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EXAMINATION" Relationship="Self.R_32" FromRole="STATUS_EXAM" ToRole="EXAMINATION" />
+  </EntityType>
+  <EntityType Name="STATUS_RESULTS">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="RESULTS" Relationship="Self.R_60" FromRole="STATUS_RESULTS" ToRole="RESULTS" />
+  </EntityType>
+  <EntityType Name="TOPIC">
+    <Key>
+      <PropertyRef Name="TopicId" />
+    </Key>
+    <Property Name="TopicId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TopicName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Question_number" Type="Int32" Nullable="false" />
+    <Property Name="Time_to_do" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="QUESTIONS" Relationship="Self.R_15" FromRole="TOPIC" ToRole="QUESTIONS" />
+  </EntityType>
+  <Association Name="R_57">
+    <End Role="CANDIDATES" Type="Self.CANDIDATES" Multiplicity="1" />
+    <End Role="RESULTS" Type="Self.RESULTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CANDIDATES">
+        <PropertyRef Name="CandidateId" />
+      </Principal>
+      <Dependent Role="RESULTS">
+        <PropertyRef Name="CandidateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_65">
+    <End Role="CANDIDATES" Type="Self.CANDIDATES" Multiplicity="1" />
+    <End Role="CANDIDATES_TEST" Type="Self.CANDIDATES_TEST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CANDIDATES">
+        <PropertyRef Name="CandidateId" />
+      </Principal>
+      <Dependent Role="CANDIDATES_TEST">
+        <PropertyRef Name="CandidateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_66">
+    <End Role="EXAMINATION" Type="Self.EXAMINATION" Multiplicity="1" />
+    <End Role="CANDIDATES_TEST" Type="Self.CANDIDATES_TEST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EXAMINATION">
+        <PropertyRef Name="ExaminationId" />
+      </Principal>
+      <Dependent Role="CANDIDATES_TEST">
+        <PropertyRef Name="ExaminationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_67">
+    <End Role="QUESTIONS" Type="Self.QUESTIONS" Multiplicity="1" />
+    <End Role="CANDIDATES_TEST" Type="Self.CANDIDATES_TEST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUESTIONS">
+        <PropertyRef Name="QuestionId" />
+        <PropertyRef Name="TopicId" />
+      </Principal>
+      <Dependent Role="CANDIDATES_TEST">
+        <PropertyRef Name="QuestionId" />
+        <PropertyRef Name="TopicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_68">
+    <End Role="CORRECT_ANSWER" Type="Self.CORRECT_ANSWER" Multiplicity="1" />
+    <End Role="QUESTIONS" Type="Self.QUESTIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CORRECT_ANSWER">
+        <PropertyRef Name="Correct_Answer_Id" />
+      </Principal>
+      <Dependent Role="QUESTIONS">
+        <PropertyRef Name="Correct_Answer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_32">
+    <End Role="STATUS_EXAM" Type="Self.STATUS_EXAM" Multiplicity="1" />
+    <End Role="EXAMINATION" Type="Self.EXAMINATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STATUS_EXAM">
+        <PropertyRef Name="StatusId" />
+      </Principal>
+      <Dependent Role="EXAMINATION">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_54">
+    <End Role="EXAMINATION" Type="Self.EXAMINATION" Multiplicity="1" />
+    <End Role="REL_EXAMINATION_QUESTIONS" Type="Self.REL_EXAMINATION_QUESTIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EXAMINATION">
+        <PropertyRef Name="ExaminationId" />
+      </Principal>
+      <Dependent Role="REL_EXAMINATION_QUESTIONS">
+        <PropertyRef Name="ExaminationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_59">
+    <End Role="EXAMINATION" Type="Self.EXAMINATION" Multiplicity="1" />
+    <End Role="RESULTS" Type="Self.RESULTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EXAMINATION">
+        <PropertyRef Name="ExaminationId" />
+      </Principal>
+      <Dependent Role="RESULTS">
+        <PropertyRef Name="ExaminationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_8">
+    <End Role="EXAMINATION" Type="Self.EXAMINATION" Multiplicity="1" />
+    <End Role="REL_MANAGER_EXAMINATION" Type="Self.REL_MANAGER_EXAMINATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EXAMINATION">
+        <PropertyRef Name="ExaminationId" />
+      </Principal>
+      <Dependent Role="REL_MANAGER_EXAMINATION">
+        <PropertyRef Name="ExaminationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_3">
+    <End Role="MANAGER" Type="Self.MANAGER" Multiplicity="1" />
+    <End Role="REL_MANAGER_ROLES" Type="Self.REL_MANAGER_ROLES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MANAGER">
+        <PropertyRef Name="ManagerId" />
+      </Principal>
+      <Dependent Role="REL_MANAGER_ROLES">
+        <PropertyRef Name="ManagerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_6">
+    <End Role="MANAGER" Type="Self.MANAGER" Multiplicity="1" />
+    <End Role="REL_MANAGER_EXAMINATION" Type="Self.REL_MANAGER_EXAMINATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MANAGER">
+        <PropertyRef Name="ManagerId" />
+      </Principal>
+      <Dependent Role="REL_MANAGER_EXAMINATION">
+        <PropertyRef Name="ManagerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_15">
+    <End Role="TOPIC" Type="Self.TOPIC" Multiplicity="1" />
+    <End Role="QUESTIONS" Type="Self.QUESTIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TOPIC">
+        <PropertyRef Name="TopicId" />
+      </Principal>
+      <Dependent Role="QUESTIONS">
+        <PropertyRef Name="TopicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_56">
+    <End Role="QUESTIONS" Type="Self.QUESTIONS" Multiplicity="1" />
+    <End Role="REL_EXAMINATION_QUESTIONS" Type="Self.REL_EXAMINATION_QUESTIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QUESTIONS">
+        <PropertyRef Name="QuestionId" />
+        <PropertyRef Name="TopicId" />
+      </Principal>
+      <Dependent Role="REL_EXAMINATION_QUESTIONS">
+        <PropertyRef Name="QuestionId" />
+        <PropertyRef Name="TopicId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_5">
+    <End Role="ROLES" Type="Self.ROLES" Multiplicity="1" />
+    <End Role="REL_MANAGER_ROLES" Type="Self.REL_MANAGER_ROLES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLES">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="REL_MANAGER_ROLES">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_60">
+    <End Role="STATUS_RESULTS" Type="Self.STATUS_RESULTS" Multiplicity="1" />
+    <End Role="RESULTS" Type="Self.RESULTS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STATUS_RESULTS">
+        <PropertyRef Name="StatusId" />
+      </Principal>
+      <Dependent Role="RESULTS">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Project3Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CANDIDATES" EntityType="Self.CANDIDATES" />
+    <EntitySet Name="CANDIDATES_TEST" EntityType="Self.CANDIDATES_TEST" />
+    <EntitySet Name="CORRECT_ANSWER" EntityType="Self.CORRECT_ANSWER" />
+    <EntitySet Name="EXAMINATION" EntityType="Self.EXAMINATION" />
+    <EntitySet Name="MANAGER" EntityType="Self.MANAGER" />
+    <EntitySet Name="QUESTIONS" EntityType="Self.QUESTIONS" />
+    <EntitySet Name="REL_EXAMINATION_QUESTIONS" EntityType="Self.REL_EXAMINATION_QUESTIONS" />
+    <EntitySet Name="REL_MANAGER_EXAMINATION" EntityType="Self.REL_MANAGER_EXAMINATION" />
+    <EntitySet Name="REL_MANAGER_ROLES" EntityType="Self.REL_MANAGER_ROLES" />
+    <EntitySet Name="RESULTS" EntityType="Self.RESULTS" />
+    <EntitySet Name="ROLES" EntityType="Self.ROLES" />
+    <EntitySet Name="STATUS_EXAM" EntityType="Self.STATUS_EXAM" />
+    <EntitySet Name="STATUS_RESULTS" EntityType="Self.STATUS_RESULTS" />
+    <EntitySet Name="TOPIC" EntityType="Self.TOPIC" />
+    <AssociationSet Name="R_57" Association="Self.R_57">
+      <End Role="CANDIDATES" EntitySet="CANDIDATES" />
+      <End Role="RESULTS" EntitySet="RESULTS" />
+    </AssociationSet>
+    <AssociationSet Name="R_65" Association="Self.R_65">
+      <End Role="CANDIDATES" EntitySet="CANDIDATES" />
+      <End Role="CANDIDATES_TEST" EntitySet="CANDIDATES_TEST" />
+    </AssociationSet>
+    <AssociationSet Name="R_66" Association="Self.R_66">
+      <End Role="EXAMINATION" EntitySet="EXAMINATION" />
+      <End Role="CANDIDATES_TEST" EntitySet="CANDIDATES_TEST" />
+    </AssociationSet>
+    <AssociationSet Name="R_67" Association="Self.R_67">
+      <End Role="QUESTIONS" EntitySet="QUESTIONS" />
+      <End Role="CANDIDATES_TEST" EntitySet="CANDIDATES_TEST" />
+    </AssociationSet>
+    <AssociationSet Name="R_68" Association="Self.R_68">
+      <End Role="CORRECT_ANSWER" EntitySet="CORRECT_ANSWER" />
+      <End Role="QUESTIONS" EntitySet="QUESTIONS" />
+    </AssociationSet>
+    <AssociationSet Name="R_32" Association="Self.R_32">
+      <End Role="STATUS_EXAM" EntitySet="STATUS_EXAM" />
+      <End Role="EXAMINATION" EntitySet="EXAMINATION" />
+    </AssociationSet>
+    <AssociationSet Name="R_54" Association="Self.R_54">
+      <End Role="EXAMINATION" EntitySet="EXAMINATION" />
+      <End Role="REL_EXAMINATION_QUESTIONS" EntitySet="REL_EXAMINATION_QUESTIONS" />
+    </AssociationSet>
+    <AssociationSet Name="R_59" Association="Self.R_59">
+      <End Role="EXAMINATION" EntitySet="EXAMINATION" />
+      <End Role="RESULTS" EntitySet="RESULTS" />
+    </AssociationSet>
+    <AssociationSet Name="R_8" Association="Self.R_8">
+      <End Role="EXAMINATION" EntitySet="EXAMINATION" />
+      <End Role="REL_MANAGER_EXAMINATION" EntitySet="REL_MANAGER_EXAMINATION" />
+    </AssociationSet>
+    <AssociationSet Name="R_3" Association="Self.R_3">
+      <End Role="MANAGER" EntitySet="MANAGER" />
+      <End Role="REL_MANAGER_ROLES" EntitySet="REL_MANAGER_ROLES" />
+    </AssociationSet>
+    <AssociationSet Name="R_6" Association="Self.R_6">
+      <End Role="MANAGER" EntitySet="MANAGER" />
+      <End Role="REL_MANAGER_EXAMINATION" EntitySet="REL_MANAGER_EXAMINATION" />
+    </AssociationSet>
+    <AssociationSet Name="R_15" Association="Self.R_15">
+      <End Role="TOPIC" EntitySet="TOPIC" />
+      <End Role="QUESTIONS" EntitySet="QUESTIONS" />
+    </AssociationSet>
+    <AssociationSet Name="R_56" Association="Self.R_56">
+      <End Role="QUESTIONS" EntitySet="QUESTIONS" />
+      <End Role="REL_EXAMINATION_QUESTIONS" EntitySet="REL_EXAMINATION_QUESTIONS" />
+    </AssociationSet>
+    <AssociationSet Name="R_5" Association="Self.R_5">
+      <End Role="ROLES" EntitySet="ROLES" />
+      <End Role="REL_MANAGER_ROLES" EntitySet="REL_MANAGER_ROLES" />
+    </AssociationSet>
+    <AssociationSet Name="R_60" Association="Self.R_60">
+      <End Role="STATUS_RESULTS" EntitySet="STATUS_RESULTS" />
+      <End Role="RESULTS" EntitySet="RESULTS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

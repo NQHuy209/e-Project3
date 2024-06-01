@@ -1,0 +1,125 @@
+@model List<Project_3.Models.REL_EXAMINATION_QUESTIONS>
+@{
+    ViewBag.Title = "Aptitude Test - Webster Corporation";
+}
+
+<!-- CSS Aptitude Test -->
+@Styles.Render("~/Content/css/aptitude-test.css")
+
+<!-- Body -->
+<div class="main-content">
+    <div class="breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">@Html.ActionLink("Home", "", "Home")</li>
+                    <li class="breadcrumb-item">@Html.ActionLink("Exam", "", "Exam")</li>
+                    <li class="breadcrumb-item">@Html.ActionLink("Topic", "Topic", "AptitudeTest", new { area = "", id = ViewBag.ExamId }, new { })</li>
+                    <li class="breadcrumb-item">@Html.ActionLink("Guide", "Guide", "AptitudeTest", new { area = "", id = ViewBag.ExamId }, new { })</li>
+                    <li class="breadcrumb-item">Aptitude Test</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content-two-columns">
+        <div class="container">
+            @using (Html.BeginForm("Index", "AptitudeTest", FormMethod.Post))
+            {
+                <div class="row" style="flex-wrap: nowrap;">
+                    <!--LEFT CONTENT-->
+                    <div class="cot-trai">
+                        <div class="skill-test-lists common-test-detail">
+                            <div class="col-12 col-lg-12 col-sm-12">
+                                <div class="row">
+                                    <div class="d9Box part-item detail">
+                                        <div class="exam-content">
+                                            <ul>
+                                                @if (Model.Any())
+                                                {
+                                                    int i = 0;
+                                                    int count = 1;
+                                                    foreach (var item in Model)
+                                                    {
+                                                        <li>
+                                                            <h4>Question @(count++): @item.QUESTIONS.Content (@item.QUESTIONS.Point Point)</h4>
+                                                            <div class="part-item detail question-detail" style="padding: 10px">
+                                                                <div class="question-answer-detail">
+                                                                    <div class="radio-control">
+                                                                        @Html.RadioButton("Question" + i, 1, new { @class = "custom-control-input", id = "answerA" + item.QuestionId })
+                                                                        @Html.Label("answerA" + item.QuestionId, "A. " + item.QUESTIONS.Answer_A, new { @class = "custom-control-label" })
+                                                                    </div>
+                                                                    <div class="radio-control">
+                                                                        @Html.RadioButton("Question" + i, 2, new { @class = "custom-control-input", id = "answerB" + item.QuestionId })
+                                                                        @Html.Label("answerB" + item.QuestionId, "B. " + item.QUESTIONS.Answer_B, new { @class = "custom-control-label" })
+                                                                    </div>
+                                                                    <div class="radio-control">
+                                                                        @Html.RadioButton("Question" + i, 3, new { @class = "custom-control-input", id = "answerC" + item.QuestionId })
+                                                                        @Html.Label("answerC" + item.QuestionId, "C. " + item.QUESTIONS.Answer_C, new { @class = "custom-control-label" })
+                                                                    </div>
+                                                                    <div class="radio-control">
+                                                                        @Html.RadioButton("Question" + i, 4, new { @class = "custom-control-input", id = "answerD" + item.QuestionId })
+                                                                        @Html.Label("answerD" + item.QuestionId, "D. " + item.QUESTIONS.Answer_D, new { @class = "custom-control-label" })
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <input name="questionId" value=@item.QuestionId hidden />
+                                                        </li>
+                                                        i++;
+                                                    }
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--RIGHT CONTENT-->
+                    <div class="cot-phai">
+                        <div class="skill-test-lists common-test-detail">
+                            <div class="col-12 col-lg-12 col-sm-12">
+                                <div class="row">
+                                    <div class="d9Box part-item detail">
+                                        <h3 class="title22Bold" style="text-align: center">@ViewBag.ExamName - @ViewBag.Topic</h3>
+                                        <div class="detail-question" style="padding: 10px">
+                                            <div class="num-question col" style="padding-left: 12px">
+                                                <span><i class="fa fa-check-square-o" aria-hidden="true"></i>@ViewBag.QuestionNumber question</span>
+                                            </div>
+                                            <div class="num-attempt col">
+                                                <i class="fa fa-clock-o" aria-hidden="true"></i><span id="timer"></span>
+                                            </div>
+                                        </div>
+                                        <input type="submit" class="btn blue bigsize f16b h51" id="complete" value=@(ViewBag.TopicId == 3 ? "Complete my test" : "Complete") />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    var min = @ViewBag.min;
+    var sec = 0;
+
+    function countdown() {
+        cdID = setInterval(function () {
+            if (sec == 0) {
+                min--;
+                sec = 60;
+            }
+            sec--;
+            min_text = min < 10 ? ('0' + min) : min;
+            sec_text = sec < 10 ? ('0' + sec) : sec;
+            $('#timer').text(min_text + ':' + sec_text);
+            if (min <= 0 && sec <= 0) {
+                $("#complete").click();
+            }
+        }, 1000);
+    }
+    countdown();
+</script>
