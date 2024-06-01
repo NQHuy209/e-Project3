@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f35f8c526fe14dd7ba945bd22bacb0c1" Name="Diagram1">
+        <EntityTypeShape EntityType="Project3Model.CANDIDATES" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Project3Model.CANDIDATES_TEST" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Project3Model.CORRECT_ANSWER" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Project3Model.EXAMINATION" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Project3Model.MANAGER" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Project3Model.QUESTIONS" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Project3Model.REL_EXAMINATION_QUESTIONS" Width="1.5" PointX="8.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Project3Model.REL_MANAGER_EXAMINATION" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Project3Model.REL_MANAGER_ROLES" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Project3Model.RESULTS" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Project3Model.ROLES" Width="1.5" PointX="3" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Project3Model.STATUS_EXAM" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Project3Model.STATUS_RESULTS" Width="1.5" PointX="3" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="Project3Model.TOPIC" Width="1.5" PointX="0.75" PointY="17" IsExpanded="true" />
+        <AssociationConnector Association="Project3Model.R_57" ManuallyRouted="false" />
+        <AssociationConnector Association="Project3Model.R_65" ManuallyRouted="false" />
+        <AssociationConnector Association="Project3Model.R_66" ManuallyRouted="false" />
+        <AssociationConnector Association="Project3Model.R_67" ManuallyRouted="false" />
+        <AssociationConnector Association="Project3Model.R_68" ManuallyRouted="false" />
+        <AssociationConnector Association="Project3Model.R_32" ManuallyRouted="false" />
+        <AssociationConnector Association="Project3Model.R_54" ManuallyRouted="false" />
+        <AssociationConnector Association="Project3Model.R_59" ManuallyRouted="false" />
+        <AssociationConnector Association="Project3Model.R_8" ManuallyRouted="false" />
+        <AssociationConnector Association="Project3Model.R_3" ManuallyRouted="false" />
+        <AssociationConnector Association="Project3Model.R_6" ManuallyRouted="false" />
+        <AssociationConnector Association="Project3Model.R_15" ManuallyRouted="false" />
+        <AssociationConnector Association="Project3Model.R_56" ManuallyRouted="false" />
+        <AssociationConnector Association="Project3Model.R_5" ManuallyRouted="false" />
+        <AssociationConnector Association="Project3Model.R_60" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

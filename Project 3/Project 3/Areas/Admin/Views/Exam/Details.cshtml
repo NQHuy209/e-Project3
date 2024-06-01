@@ -1,0 +1,81 @@
+﻿@model List<Project_3.Models.REL_EXAMINATION_QUESTIONS>
+@{
+    ViewBag.Title = "Details Exam";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    @using (Html.BeginForm("Details", "Exam", FormMethod.Get))
+    {
+        <div class="form-group">
+            Topic:
+            <select class="form-control" name="topic" style="width:30%">
+                @foreach (var topic in Project_3.Data.Common.Topic())
+                {
+                    if (ViewBag.Topic == topic.TopicId)
+                    {
+                        <option value=@topic.TopicId selected>@topic.TopicName</option>
+                    }
+                    else
+                    {
+                        <option value=@topic.TopicId>@topic.TopicName</option>
+                    }
+                }
+            </select>
+            <button type="submit" class="btn btn-primary">Run</button>
+            @Html.ActionLink("Back", "", "Exam", new { area = "Admin" }, new { @class = "btn btn-outline-secondary btn-fw" })
+        </div>
+    }
+    <div class="row">
+        @if (Model.Any())
+        {
+            <h1 style="text-align: center; color: #0b8dd9">
+                @ViewBag.QuestionNumber Question - @ViewBag.Score Score
+            </h1>
+            int i = 1;
+            foreach (var x in Model)
+            {
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Question @i: @x.QUESTIONS.Content (@x.QUESTIONS.Point Point)</h4>
+                            <input type="radio" name="@x.QuestionId" id="@x.QuestionId-A" value="1" checked=@(x.QUESTIONS.Correct_Answer_Id == 1 ? "checked" : null)>
+                            <label for="@x.QuestionId-A">A. @x.QUESTIONS.Answer_A</label>
+                            <div style="margin-bottom: 20px;"></div>
+
+                            <input type="radio" name="@x.QuestionId" id="@x.QuestionId-B" value="2" checked=@(x.QUESTIONS.Correct_Answer_Id == 2 ? "checked" : null)>
+                            <label for="@x.QuestionId-B">B. @x.QUESTIONS.Answer_B</label>
+                            <div style="margin-bottom: 20px;"></div>
+
+                            <input type="radio" name="@x.QuestionId" id="@x.QuestionId-C" value="3" checked=@(x.QUESTIONS.Correct_Answer_Id == 3 ? "checked" : null)>
+                            <label for="@x.QuestionId-C">C. @x.QUESTIONS.Answer_C</label>
+                            <div style="margin-bottom: 20px;"></div>
+
+                            <input type="radio" name="@x.QuestionId" id="@x.QuestionId-D" value="4" checked=@(x.QUESTIONS.Correct_Answer_Id == 4 ? "checked" : null)>
+                            <label for="@x.QuestionId-D">D. @x.QUESTIONS.Answer_D</label>
+                        </div>
+                        @if (ViewBag.Status == 1)
+                        {
+                            using (Html.BeginForm("Details", "Exam", FormMethod.Post))
+                            {
+                                <div class="form-group">
+                                    <input name="QuestionId" value=@x.QuestionId hidden>
+                                    <button type="submit" class="btn btn-danger">Remove</button>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+                i++;
+            }
+        }
+        else
+        {
+            <h1 style="text-align:center; font-size:90px; color:darkgrey">There are no questions in the exam</h1>
+        }
+    </div>
+</div>
+
+@{
+    Project_3.Data.Common.SearchTopic = ViewBag.Topic;
+}

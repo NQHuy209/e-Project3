@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Create Exam";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Create Exam</h1>
+                    @if (ViewBag.Message != null)
+                    {
+                        <div class="alert alert-success" role="alert">
+                            <b>@ViewBag.Message</b>
+                        </div>
+                    }
+                    @using (Html.BeginForm("Create", "Exam", FormMethod.Post, new { @class = "forms-sample" }))
+                    {
+                        <div class="form-group">
+                            <label for="ExaminationName">Name:</label>
+                            <input type="text" class="form-control" name="ExaminationName" placeholder="Name">
+                            @Html.ValidationMessage("ExaminationName", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Start_time">Start Time:</label>
+                            <input type="datetime-local" class="form-control" name="Start_time">
+                            @Html.ValidationMessage("Start_time", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="End_time">End Time:</label>
+                            <input type="datetime-local" class="form-control" name="End_time">
+                            @Html.ValidationMessage("End_time", "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="Descriptions">Description:</label>
+                            <textarea name="Descriptions" class="form-control" rows="6" placeholder="Description"></textarea>
+                            @Html.ValidationMessage("Descriptions", "", new { @class = "text-danger" })
+                        </div>
+                        <button type="submit" class="btn btn-inverse-primary btn-fw">Create</button>
+                        @Html.ActionLink("Cancel", "", "Exam", new { area = "Admin" }, new { @class = "btn btn-inverse-secondary btn-fw" })
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

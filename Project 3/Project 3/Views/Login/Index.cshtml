@@ -1,0 +1,45 @@
+@{
+    ViewBag.Title = "Login - Webster Corporation";
+}
+
+<!-- CSS Login -->
+@Styles.Render("~/Content/css/login.css")
+
+<!-- Body -->
+<div class="main-content">
+    <div class="breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">@Html.ActionLink("Home", "", "Home")</li>
+                    <li class="breadcrumb-item">Login</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="page-content">
+        <div class="form-v4-content">
+            <div class="form-left">
+                <img src="~/img/Logo-(login).png" width="470" alt="Webster Corporation" style="margin-top: 150px;">
+            </div>
+            @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @class = "form-detail" }))
+            {
+                <h2>LOGIN</h2>
+                <div class="form-row">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" class="input-text">
+                    @Html.ValidationMessage("username", new { @class = "text-danger" })
+                </div>
+                <div class="form-row">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="input-text">
+                    @Html.ValidationMessage("password", new { @class = "text-danger" })
+                </div>
+                <div class="form-row-last">
+                    <input type="submit" name="login" class="login" value="Login">
+                </div>
+            }
+        </div>
+    </div>
+</div>

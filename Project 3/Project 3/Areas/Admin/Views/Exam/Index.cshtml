@@ -1,0 +1,123 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<Project_3.Models.EXAMINATION>
+@{
+    ViewBag.Title = "Manage Exam";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Examination</h1>
+                    @if (Project_3.Data.Common.Success != null)
+                    {
+                        <div class="alert alert-success" role="alert">
+                            <b>@Project_3.Data.Common.Success</b>
+                        </div>
+                        Project_3.Data.Common.Success = null;
+                    }
+                    @if (Project_3.Data.Common.Fail != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            <b>@Project_3.Data.Common.Fail</b>
+                        </div>
+                        Project_3.Data.Common.Fail = null;
+                    }
+                    @using (Html.BeginForm("Index", "Exam", FormMethod.Get))
+                    {
+                        <div class="form-group">
+                            Search: <input type="text" class="form-control" name="search" placeholder="Search Name" style="width:30%" value="@ViewBag.Search">
+                            Status:
+                            <select class="form-control" name="status" style="width:30%">
+                                <option value=0>- - -</option>
+                                @foreach (var status in Project_3.Data.Common.StatusExam())
+                                {
+                                    if (ViewBag.Status == status.StatusId)
+                                    {
+                                        <option value=@status.StatusId selected>@status.StatusName</option>
+                                    }
+                                    else
+                                    {
+                                        <option value=@status.StatusId>@status.StatusName</option>
+                                    }
+                                }
+                            </select>
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    }
+                    @Html.ActionLink("Create", "Create", "Exam", new { area = "Admin" }, new { @class = "btn btn-inverse-primary btn-fw" })
+                    <div class="table-responsive pt-3">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Start Time</th>
+                                    <th>End Time</th>
+                                    <th>Score</th>
+                                    <th>Status</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.Count > 0)
+                                {
+                                    int i = (ViewBag.Page * ViewBag.PageSize) - (ViewBag.PageSize - 1);
+                                    foreach (var exam in Model)
+                                    {
+                                        <tr>
+                                            <td>@(i++)</td>
+                                            <td>@exam.ExaminationName</td>
+                                            <td>@exam.Start_time</td>
+                                            <td>@exam.End_time</td>
+                                            <td>@exam.Score</td>
+                                            <td>@exam.STATUS_EXAM.StatusName</td>
+                                            <td>@exam.Descriptions</td>
+                                            <td>
+                                                @Html.ActionLink(" ", "Details", "Exam", new { area = "Admin", id = exam.ExaminationId, topic = 1 }, new { title = "Details", @class = "mdi mdi-information-outline", style = "font-size:25px;text-decoration:none" })
+                                                @if (exam.StatusId == 1)
+                                                {
+                                                    @Html.ActionLink(" ", "Update", "Exam", new { area = "Admin", id = exam.ExaminationId }, new { title = "Update", @class = "mdi mdi-pencil-outline", style = "font-size:25px;text-decoration:none" })
+                                                    @Html.ActionLink(" ", "AddQuestionToExam", "Exam", new { area = "Admin", id = exam.ExaminationId }, new { title = "Add Question to Exam", @class = "mdi mdi-plus-circle-outline", style = "font-size:25px;text-decoration:none" })
+                                                    if (Project_3.Data.Common.ManagerCreateExam(exam.ExaminationId, Project_3.Data.Manager.id))
+                                                    {
+                                                        @Html.ActionLink(" ", "ManagerExam", "Exam", new { area = "Admin", id = exam.ExaminationId }, new { title = "Manager Exam", @class = "mdi mdi-account-multiple-outline", style = "font-size:25px;text-decoration:none" })
+                                                    }
+                                                    @Html.ActionLink(" ", "Activate", "Exam", new { area = "Admin", id = exam.ExaminationId }, new { title = "Activate", @class = "mdi mdi-checkbox-marked-circle-outline", style = "font-size:25px;text-decoration:none" })
+                                                }
+                                                else
+                                                {
+                                                    @Html.ActionLink(" ", "Result", "Exam", new { area = "Admin", id = exam.ExaminationId }, new { title = "Testing / Result", @class = "mdi mdi-arrow-right", style = "font-size:25px;text-decoration:none" })
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="8" style="text-align:center; font-size:large;">
+                                            <b>No Data</b>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="center">
+                        @Html.PagedListPager(Model, p => Url.Action("Index", new { page = p, searchPage = ViewBag.Search, statusPage = ViewBag.Status }))
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    Project_3.Data.Common.Page = ViewBag.Page;
+    Project_3.Data.Common.Search = ViewBag.Search;
+    Project_3.Data.Common.SearchStatus = ViewBag.Status;
+}

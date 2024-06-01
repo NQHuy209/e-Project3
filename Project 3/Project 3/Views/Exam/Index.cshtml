@@ -1,0 +1,75 @@
+@model List<Project_3.Models.EXAMINATION>
+@{
+    ViewBag.Title = "Examination - Webster Corporation";
+}
+<!-- Body -->
+<div class="main-content">
+    <div class="breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">@Html.ActionLink("Home", "", "Home")</li>
+                    <li class="breadcrumb-item">Exam</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="content-two-columns">
+        <div class="container">
+            <div>
+                <div>
+                    @if (ViewBag.Message != null)
+                    {
+                        <div class="alert alert-primary" role="alert">
+                            <b>@ViewBag.Message</b>
+                        </div>
+                    }
+                    <div class="d9Box english-selection examination-test">
+                        <div class="container">
+                            <h1 class="title30Bold" style="text-align: center;">EXAMINATION</h1>
+                            <div class="select-content-question">
+                                <div class="skill-test-lists common-test-detail">
+                                    <div class="col-12 col-lg-12 col-sm-12">
+                                        <div class="row">
+                                            @if (Model.Any())
+                                            {
+                                                foreach (var exam in Model)
+                                                {
+                                                    <div class="d9Box part-item">
+                                                        <h2 class="title22Bold c065">@exam.ExaminationName</h2>
+                                                        <p class="mt-2">@exam.Descriptions</p>
+                                                        <div class="view-detail">
+                                                            <div class="num-exam"><i class="fa-regular fa-calendar-days"></i> @exam.Start_time</div>
+                                                        </div>
+                                                        <div class="brLine margin-bottom-28"></div>
+                                                        @if (Project_3.Data.Common.CheckExamActivate(exam.ExaminationId))
+                                                        {
+                                                            using (Html.BeginForm("Index", "Exam", FormMethod.Post))
+                                                            {
+                                                                <div class="center-btn" style="padding: 0;">
+                                                                    <input name="ExamId" value="@exam.ExaminationId" hidden />
+                                                                    <input type="submit" class="btn blue bigsize f16b h51" value="View exam information" />
+                                                                </div>
+                                                            }
+                                                        }
+                                                    </div>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <div class="d9Box part-item">
+                                                    <h1 class="title30Bold c065" style="text-align:center">There are no exams</h1>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

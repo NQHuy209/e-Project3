@@ -1,0 +1,78 @@
+@model Project_3.Models.CANDIDATES
+@{
+    ViewBag.Title = "Update Information - Webster Corporation";
+}
+<!-- Body -->
+<div class="main-content">
+    <div class="breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">@Html.ActionLink("Home", "", "Home")</li>
+                    <li class="breadcrumb-item">@Html.ActionLink("User", "", "User")</li>
+                    <li class="breadcrumb-item">Update Information</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="section-gap">
+        <div class="container">
+            <div class="row row10">
+                <div class="col-md">
+                    <div class="information-inner">
+                        <div class="card rounded-sm bg-white">
+                            <div class="card-header bg-transparent rounded-0 border-0">
+                                <div class="heading-m1">
+                                    <div class="title">Update Information</div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="information-view" id="informationView">
+                                    @using (Html.BeginForm("Update", "User", FormMethod.Post, new { @class = "form-detail" }))
+                                    {
+                                        <div class="information-list">
+                                            <div class="form-group">
+                                                <label for="FullName">Full Name:</label>
+                                                <input type="text" class="form-control" name="FullName" value="@Model.FullName">
+                                                @Html.ValidationMessageFor(c => c.FullName, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Birth">Date of birth:</label>
+                                                <input type="date" class="form-control" name="Birth" value="@Html.DisplayFor(c => c.Birth)">
+                                                @Html.ValidationMessageFor(c => c.Birth, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Gender">Gender:</label>
+                                                @Html.DropDownListFor(c => c.Gender, new[] { new SelectListItem() { Text = "Male", Value = "Male" }, new SelectListItem() { Text = "Female", Value = "Female" } }, new { @class = "form-control" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="PhoneNumber">Phone number:</label>
+                                                <input type="number" class="form-control" name="PhoneNumber" value="@Model.PhoneNumber">
+                                                @Html.ValidationMessageFor(c => c.PhoneNumber, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Email">Email:</label>
+                                                <input type="email" class="form-control" name="Email" value="@Model.Email">
+                                                @Html.ValidationMessageFor(c => c.Email, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Address">Address:</label>
+                                                <input type="text" class="form-control" name="Address" value="@Model.Address">
+                                                @Html.ValidationMessageFor(c => c.Address, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="mt-5 pt-4 border-top text-center text-md-left">
+                                            <input type="submit" class="btn blue" value="Save">
+                                            @Html.ActionLink("Cancel", "", "User", new { area = "" }, new { @class = "btn btn-secondary" })
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

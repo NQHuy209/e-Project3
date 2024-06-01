@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Project3ModelStoreContainer" CdmEntityContainer="Project3Entities">
+    <EntitySetMapping Name="CANDIDATES">
+      <EntityTypeMapping TypeName="Project3Model.CANDIDATES">
+        <MappingFragment StoreEntitySet="CANDIDATES">
+          <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Birth" ColumnName="Birth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Education" ColumnName="Education" />
+          <ScalarProperty Name="WorkExperience" ColumnName="WorkExperience" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CANDIDATES_TEST">
+      <EntityTypeMapping TypeName="Project3Model.CANDIDATES_TEST">
+        <MappingFragment StoreEntitySet="CANDIDATES_TEST">
+          <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+          <ScalarProperty Name="ExaminationId" ColumnName="ExaminationId" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+          <ScalarProperty Name="Candidate_Answer" ColumnName="Candidate_Answer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CORRECT_ANSWER">
+      <EntityTypeMapping TypeName="Project3Model.CORRECT_ANSWER">
+        <MappingFragment StoreEntitySet="CORRECT_ANSWER">
+          <ScalarProperty Name="Correct_Answer_Id" ColumnName="Correct_Answer_Id" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EXAMINATION">
+      <EntityTypeMapping TypeName="Project3Model.EXAMINATION">
+        <MappingFragment StoreEntitySet="EXAMINATION">
+          <ScalarProperty Name="ExaminationId" ColumnName="ExaminationId" />
+          <ScalarProperty Name="ExaminationName" ColumnName="ExaminationName" />
+          <ScalarProperty Name="Start_time" ColumnName="Start_time" />
+          <ScalarProperty Name="End_time" ColumnName="End_time" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MANAGER">
+      <EntityTypeMapping TypeName="Project3Model.MANAGER">
+        <MappingFragment StoreEntitySet="MANAGER">
+          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Birth" ColumnName="Birth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QUESTIONS">
+      <EntityTypeMapping TypeName="Project3Model.QUESTIONS">
+        <MappingFragment StoreEntitySet="QUESTIONS">
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Answer_A" ColumnName="Answer_A" />
+          <ScalarProperty Name="Answer_B" ColumnName="Answer_B" />
+          <ScalarProperty Name="Answer_C" ColumnName="Answer_C" />
+          <ScalarProperty Name="Answer_D" ColumnName="Answer_D" />
+          <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+          <ScalarProperty Name="Point" ColumnName="Point" />
+          <ScalarProperty Name="Correct_Answer_Id" ColumnName="Correct_Answer_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REL_EXAMINATION_QUESTIONS">
+      <EntityTypeMapping TypeName="Project3Model.REL_EXAMINATION_QUESTIONS">
+        <MappingFragment StoreEntitySet="REL_EXAMINATION_QUESTIONS">
+          <ScalarProperty Name="ExaminationId" ColumnName="ExaminationId" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REL_MANAGER_EXAMINATION">
+      <EntityTypeMapping TypeName="Project3Model.REL_MANAGER_EXAMINATION">
+        <MappingFragment StoreEntitySet="REL_MANAGER_EXAMINATION">
+          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+          <ScalarProperty Name="ExaminationId" ColumnName="ExaminationId" />
+          <ScalarProperty Name="ManagerId_create" ColumnName="ManagerId_create" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REL_MANAGER_ROLES">
+      <EntityTypeMapping TypeName="Project3Model.REL_MANAGER_ROLES">
+        <MappingFragment StoreEntitySet="REL_MANAGER_ROLES">
+          <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Timestamps" ColumnName="Timestamps" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RESULTS">
+      <EntityTypeMapping TypeName="Project3Model.RESULTS">
+        <MappingFragment StoreEntitySet="RESULTS">
+          <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+          <ScalarProperty Name="ExaminationId" ColumnName="ExaminationId" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROLES">
+      <EntityTypeMapping TypeName="Project3Model.ROLES">
+        <MappingFragment StoreEntitySet="ROLES">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STATUS_EXAM">
+      <EntityTypeMapping TypeName="Project3Model.STATUS_EXAM">
+        <MappingFragment StoreEntitySet="STATUS_EXAM">
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STATUS_RESULTS">
+      <EntityTypeMapping TypeName="Project3Model.STATUS_RESULTS">
+        <MappingFragment StoreEntitySet="STATUS_RESULTS">
+          <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TOPIC">
+      <EntityTypeMapping TypeName="Project3Model.TOPIC">
+        <MappingFragment StoreEntitySet="TOPIC">
+          <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+          <ScalarProperty Name="TopicName" ColumnName="TopicName" />
+          <ScalarProperty Name="Question_number" ColumnName="Question_number" />
+          <ScalarProperty Name="Time_to_do" ColumnName="Time_to_do" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

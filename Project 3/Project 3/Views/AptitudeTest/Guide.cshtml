@@ -1,0 +1,61 @@
+@model Project_3.Models.EXAMINATION
+@{
+    ViewBag.Title = "Guide - Webster Corporation";
+}
+<!-- Body -->
+<div class="main-content">
+    <div class="breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">@Html.ActionLink("Home", "", "Home")</li>
+                    <li class="breadcrumb-item">@Html.ActionLink("Exam", "", "Exam")</li>
+                    <li class="breadcrumb-item">@Html.ActionLink("Topic", "Topic", "AptitudeTest", new { area = "", id = ViewBag.ExamId }, new { })</li>
+                    <li class="breadcrumb-item">Guide</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="content-two-columns">
+        <div class="container">
+            <div class="row">
+                <div class="center-btn">
+                    <div class="skill-test-lists common-test-detail">
+                        <div class="col-12 col-lg-12 col-sm-12">
+                            <div class="row">
+                                <div class="d9Box part-item detail">
+                                    <h3 class="title30Bold" style="text-align: center;">@Model.ExaminationName</h3>
+                                    <div class="detail-question">
+                                        <div class="num-question col"><span><i class="fa fa-check-square-o" aria-hidden="true"></i>@ViewBag.QuestionNumber questions</span></div>
+                                        <div class="num-minutes col"><span><i class="fa fa-clock-o" aria-hidden="true"></i>Total: @ViewBag.Time minutes</span></div>
+                                    </div>
+
+                                    <div class="guide-examination bg-yellow">
+                                        <h3 class="title28Bold">Guide</h3>
+                                        <div class="instruction-box">
+                                            <div class="guide-row">
+                                                <div class="col symbol">
+                                                    <div class="rdBox"></div>
+                                                </div>
+                                                <div class="col desc">Select answer</div>
+                                            </div>
+                                        </div>
+                                        <p class="note red">Note:</p>
+                                        <div class="note-content">
+                                            <b>Questions unselected answer will be counted as incorrect answers.</b><br />
+                                            <b>If you log out or reload the page while taking the test, your results will not be counted.</b><br />
+                                            <b>If you score above 60% overall on the test, you will pass.</b>
+                                        </div>
+                                    </div>
+                                    <div class="center-btn">
+                                        @Html.ActionLink("Start", "", "AptitudeTest", new { area = "", id = ViewBag.ExamId }, new { @class = "btn blue bigsize f16b h51" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="~/img/icon.png">
+    @Styles.Render("~/Content/css/bootstrap.min.css")
+    @Styles.Render("~/Content/css/common.css")
+    @Styles.Render("~/Content/css/desktop.css")
+    @Styles.Render("https://fonts.googleapis.com/css?family=Nunito")
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Header -->
+        <header>
+            <div class="container">
+                <nav class="navbar navbar-expand">
+                    <a class="navbar-brand" href="/">
+                        <img src="~/img/Logo-(header).png" width="285" alt="Webster Corporation" />
+                    </a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav">
+                            <li class="nav-item  dropdown">
+                                @Html.ActionLink("ABOUT US", "About", "Home", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+                            <li class="nav-item  dropdown">
+                                @Html.ActionLink("EXAM", "", "Exam", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+                            <li class="nav-item  dropdown">
+                                @Html.ActionLink("CONTACT", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })
+                            </li>
+                        </ul>
+                    </div>
+                    @if (Session["Candidate-id"] == null)
+                    {
+                        <div class="account-box">
+                            <a href="/Login">
+                                <span>Login</span>
+                                <i class="user-icon"></i>
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="account-box">
+                            <a href="/User" class="user-logged">
+                                <span>Hi, @Session[Project_3.Data.Candidate.fullname]</span>
+                                <i class="user-icon"></i>
+                            </a>
+                            <div class="dropdown-menu-user">
+                                <a href="/User" class="user-logged">Account Information <i class="fa-regular fa-id-card"></i></a>
+                                <a href="@Url.Action("Logout","Login")" class="user-logged">Logout <i class="fa-solid fa-right-from-bracket"></i></a>
+                            </div>
+                        </div>
+                    }
+                </nav>
+            </div>
+        </header>
+        @RenderBody()
+        <!-- Footer -->
+        <footer>
+            <div class="footer-logo">
+                <img src="~/img/Logo-(footer).png" width="500" alt="Webster Corporation" />
+            </div>
+            <div class="container">
+                <div class="copyright" style="height:170px;">
+                    <div style="width:500px;float:left;margin-top:10px;">
+                        <p style="margin-bottom:10px;"><b>CONTENT</b></p>
+                        <p>Group 2 - C2209I</p>
+                    </div>
+                    <div style="width:500px;float:left;margin-bottom:10px;">
+                        <p style="margin-bottom:10px;"><b>CONTACT</b></p>
+                        <p style="margin-bottom:10px;">Address: 19 Lê Thanh Nghị, Quận Hai Bà Trưng, TP. Hà Nội</p>
+                        <p style="margin-bottom:10px;">Hotline: <a href="tel:19001234">1900 1234</a></p>
+                        <p>Email: <a href="mailto:WebsterCorporation@mail.com.vn">WebsterCorporation@mail.com.vn</a></p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+@Scripts.Render("https://kit.fontawesome.com/190297ec4d.js")
+@Scripts.Render("~/Scripts/js/jquery-3.5.1.min.js")
+@Scripts.Render("~/Scripts/js/jquery.easing.1.3.js")
+@Scripts.Render("~/Scripts/js/camera.js")
+@Scripts.Render("~/Scripts/js/change-password.js")
+
+</html>
